@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: python-hello
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ghcr.io/${GITHUB_REPOSITORY:-atulkamble/pythonhelloworld}:latest
+    restart: unless-stopped
+    # If helloworld.py prints once and exits, remove healthcheck.
+    # If it runs continuously (e.g., prints in a loop), you can keep healthcheck.
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; sys.exit(0)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    # Uncomment to watch local changes during dev (overrides COPY in Dockerfile)
+    # volumes:
+    #   - ./helloworld.py:/usr/app/src/helloworld.py:ro

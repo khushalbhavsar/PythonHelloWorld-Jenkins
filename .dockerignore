@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pytest_cache/
+.venv/
+venv/
+
+# Git
+.git
+.gitignore
+
+# OS/editor
+.DS_Store
+*.swp
+*.swo
+
+# Others
+README.md
